@@ -33,7 +33,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %DOCKERHUB_USER%/%IMAGE_NAME%:%BRANCH_NAME% .'
+                bat 'docker build -t %aswath1608%/%IMAGE_NAME%:%BRANCH_NAME% .'
             }
         }
 
