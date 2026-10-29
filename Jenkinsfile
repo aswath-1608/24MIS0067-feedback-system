@@ -24,16 +24,9 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                bat 'python --version'
-                bat 'python -m pip install -r requirements.txt'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %DOCKERHUB_USER%/%IMAGE_NAME%:%BRANCH_NAME% .'
+                bat 'docker build -t %aswath1608%/%IMAGE_NAME%:%BRANCH_NAME% .'
             }
         }
 
@@ -51,7 +44,7 @@ pipeline {
                         echo %DH_TOKEN% | docker login -u %DH_USER% --password-stdin
                         if errorlevel 1 exit /b 1
 
-                        docker push %DOCKERHUB_USER%/%IMAGE_NAME%:%BRANCH_NAME%
+                        docker push %aswath1608%/%IMAGE_NAME%:%BRANCH_NAME%
                         if errorlevel 1 exit /b 1
 
                         docker logout
