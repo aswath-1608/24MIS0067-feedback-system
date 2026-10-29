@@ -44,7 +44,7 @@ pipeline {
                         echo %DH_TOKEN% | docker login -u %DH_USER% --password-stdin
                         if errorlevel 1 exit /b 1
 
-                        docker push %DOCKERHUB_USER%/%IMAGE_NAME%:%BRANCH_NAME%
+                        docker push %aswath1608%/%IMAGE_NAME%:%BRANCH_NAME%
                         if errorlevel 1 exit /b 1
 
                         docker logout
