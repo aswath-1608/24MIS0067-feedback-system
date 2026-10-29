@@ -1,9 +1,9 @@
-    
+
 pipeline {
     agent any
 
     environment {
-        DOCKERHUB_USER = 'aswath-1608'
+        DOCKERHUB_USER = 'aswath1608'
         IMAGE_NAME = 'feedback-system'
     }
 
@@ -24,16 +24,15 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Check Docker') {
             steps {
-                bat 'python --version'
-                bat 'python -m pip install -r requirements.txt'
+                bat 'docker --version'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %aswath1608%/%IMAGE_NAME%:%BRANCH_NAME% .'
+                bat 'docker build -t %DOCKERHUB_USER%/%IMAGE_NAME%:%BRANCH_NAME% .'
             }
         }
 
@@ -63,7 +62,7 @@ pipeline {
 
     post {
         success {
-            echo 'The branch image was built and pushed successfully.'
+            echo 'Docker image built and pushed successfully.'
         }
         failure {
             echo 'Pipeline failed. Check Console Output.'
