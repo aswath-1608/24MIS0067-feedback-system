@@ -24,13 +24,6 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                bat 'python --version'
-                bat 'python -m pip install -r requirements.txt'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 bat 'docker build -t %aswath1608%/%IMAGE_NAME%:%BRANCH_NAME% .'
