@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback System</title>
+</head>
+<body>
+    <h1>Student Feedback System</h1>
+
+    <p>Roll Number: 24MIS0067</p>
+    <p>Current Version: {{ version }}</p>
+
+    <h2>Submit Feedback</h2>
+
+    {% if submitted %}
+        <p>Feedback submitted successfully.</p>
+    {% endif %}
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    <form action="/" method="post">
+        <p>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+        </p>
+
+        <p>
+            <label for="rating">Rating (1 to 5):</label>
+            <select id="rating" name="rating" required>
+                <option value="">Select rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="message">Your Feedback:</label>
+            <textarea id="message" name="message"
+                      rows="5" cols="40" required></textarea>
+        </p>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    {% if feature_level >= 2 %}
+        <p><a href="/feedback">View All Feedback</a></p>
+    {% endif %}
+</body>
+</html>
